@@ -38,8 +38,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
+  # devise edit account without password - google
+  def update_resource(resource, params)
+    # require current password if user is trying to change password
+    return super if params["password"]&.present?
+
+    # Alloows user to update reg without password
+    resource.update_without_password(params.except("current_password"))
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
