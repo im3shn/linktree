@@ -1,0 +1,18 @@
+<%= simple_form_for(current_user,
+                    url: (registration_path(current_user)),
+                    html: {method: :put},
+                    data: {turbo: false}
+                   ) do |f|
+    %>
+    <div>
+    <div>
+     <%= image_tag(current_user.avatar) if current_user.avatar.attached? %>
+    </div>
+    <div>
+     <%= f.input :avatar, required: false, label: false %>
+    </div>
+    <div>
+      <%= f.submit "Update Avatar" %>
+    </div>
+  </div>
+<% end %>
