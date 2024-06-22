@@ -1,6 +1,6 @@
 <div class = "container">
   <div class="row">
-    <div>Profile Image</div>
+    <div><%= image_tag(@user.avatar, class:"avatar-pic") if @user.avatar.attached? %> </div>
     <h2> <%= @user.email %> </h2>
     <p> Test desc </p>
   </div>

@@ -48,6 +48,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # Alloows user to update reg without password
     resource.update_without_password(params.except("current_password"))
   end
+
+  def after_update_path_for(_resource)
+    request.referrer
+  end
+
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
