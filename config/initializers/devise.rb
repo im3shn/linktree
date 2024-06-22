@@ -1,5 +1,20 @@
 # frozen_string_literal: true
 
+#! Create Custom failure for turbo
+#class TurboFailureApp < Devise::FailureApp
+#  def respond
+#    if request_format == :turbo_stream
+#      redirect
+#    else
+#      super
+#    end
+#  end
+#
+#  def skip_format?
+#    %w(html turbo_stream */*).include? request_format.to_s
+#  end
+#end
+
 # Assuming you have not yet modified this file, each configuration option below
 # is set to its default value. Note that some are commented out while others
 # are not: uncommented lines are intended to protect your configuration from
@@ -18,7 +33,7 @@ Devise.setup do |config|
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
-  # config.parent_controller = 'DeviseController'
+  # config.parent_controller = 'Users::DeviseController'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -44,7 +59,7 @@ Devise.setup do |config|
   # authenticating a user, both parameters are required. Remember that those
   # parameters are used only when authenticating and not when retrieving from
   # session. If you need permissions, you should implement that in a before filter.
-  # You can also supply a hash where the value is a boolean determining whether
+  # Yo, data:{turbo:fasle} u can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
   # config.authentication_keys = [:email]
 
@@ -278,6 +293,7 @@ Devise.setup do |config|
   # change the failure app, you can configure them inside the config.warden block.
   #
   # config.warden do |manager|
+  #     manager.failure_app = TurboFailureApp
   #   manager.intercept_401 = false
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
