@@ -4,7 +4,7 @@
                     data: {turbo: false}
                    ) do |f|
     %>
-    <div>
+  <div>
     <div>
      <%= image_tag(current_user.avatar, class:"avatar-pic") if current_user.avatar.attached? %>
     </div>
@@ -13,6 +13,18 @@
     </div>
     <div>
       <%= f.submit "Update Avatar" %>
+    </div>
+    <div>
+      <%= f.input :fullname, placeholder: "Your Full Name", label: false, required: false %>
+    </div>
+    <div>
+      <%= f.input :username, placeholder: "username", label: false, required: true %>
+    </div>
+    <div>
+      <%= f.input :body, placeholder: "About", label: false, required: false%>
+    </div>
+    <div>
+      <%= f.submit "Update" %>
     </div>
   </div>
 <% end %>
