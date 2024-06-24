@@ -3,5 +3,14 @@
     <div><%= image_tag(@user.avatar, class:"avatar-pic") if @user.avatar.attached? %> </div>
     <h2> <%= @user.fullname %> </h2>
     <p> <%= @user.body %> </p>
+    <div>
+      <% @links.each do |link| %>
+        <div>
+          <%= link_to link.url, target: "_blank" do %>
+            <span><%= link.title %></span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

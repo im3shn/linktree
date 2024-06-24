@@ -5,7 +5,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one_attached :avatar
+  has_many :links, dependent: :destroy
+
+  after_create :create_default_links
+  after_update :create_default_links
+
   friendly_id :username, use: %i[slugged]
+
   validates :fullname, length: { maximum: 30 }
   validates :body, length: { maximum: 100 }
   validate :valid_username
@@ -22,4 +28,9 @@ class User < ApplicationRecord
     username_changed? || slug.blank?
   end
 
+  private
+
+  def create_default_links
+    Link.create(user: self, title: '', url:'') while links.count<5
+  end
 end

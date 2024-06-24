@@ -1,3 +1,5 @@
+<%= link_to user_path(current_user.slug), user_path(current_user.slug), target:"_blank" %>
+
 <%= simple_form_for(current_user,
                     url: (registration_path(current_user)),
                     html: {method: :put},
