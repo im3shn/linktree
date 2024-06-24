@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-  before_action :authenticate_user!, excpet: [:show]
+  before_action :authenticate_user!, except: [:show]
   before_action :set_user, only: [:show]
 
   def index
