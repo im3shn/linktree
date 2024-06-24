@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   validates :fullname, length: { maximum: 30 }
   validates :body, length: { maximum: 100 }
-  validate :valid_username
+  validate :valid_username, on: :create
   def valid_username
 
     errors.add(:username, "is already taken") if User.exists?(username: username)
