@@ -1,4 +1,6 @@
 <div>
+  <h2><%= link_to user_path(current_user.slug), user_path(current_user.slug), target:"_blank" %><h2>
+
   <h1>Link Manager</h1>
   <div>
     <% current_user.links.each do |link| %>
